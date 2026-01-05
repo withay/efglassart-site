@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Testimonials - EFGlassArt</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/assets/styles.css" />
+  <meta name="description" content="Testimonials from collectors and clients."/>
+
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/index.html" aria-label="EFGlassArt home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">EFGlassArt</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/gallery.html">Gallery</a>
+      <a href="/stained-glass.html">Stained Glass</a>
+      <a href="/fused-glass.html">Fused Glass</a>
+      <a href="/commissions.html">Commissions</a>
+      <a href="/events.html">Events</a>
+      <a href="/about.html">About</a>
+      <a href="/testimonials.html">Testimonials</a>
+    </nav>
+  </div>
+</header>
+<main class="container flow">
+  <header class="page-header">
+    <h1>Testimonials</h1>
+    <p>Kind words from collectors and commission clients (U.S. and internationally).</p>
+  </header>
+
+  <section id="quotes" class="card">
+    <h2 class="sr-only">Testimonials</h2>
+
+    <article class="testimonial">
+      <blockquote>
+        <p>(Quote text…)</p>
+      </blockquote>
+      <p class="attribution">— Name / Initials, City, State/Country</p>
+    </article>
+
+    <!-- Repeat for each testimonial -->
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>EFGlassArt</strong> &mdash; stained and fused glass by Eryc Courmac.</p>
+    <p class="muted">© <span id="year"></span> EFGlassArt. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Keep the footer year current.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

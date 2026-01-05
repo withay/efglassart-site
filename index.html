@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Home - EFGlassArt</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/assets/styles.css" />
+  <meta name="description" content="Handcrafted stained and fused glass by Eryc Courmac."/>
+
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/index.html" aria-label="EFGlassArt home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">EFGlassArt</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/gallery.html">Gallery</a>
+      <a href="/stained-glass.html">Stained Glass</a>
+      <a href="/fused-glass.html">Fused Glass</a>
+      <a href="/commissions.html">Commissions</a>
+      <a href="/events.html">Events</a>
+      <a href="/about.html">About</a>
+      <a href="/testimonials.html">Testimonials</a>
+    </nav>
+  </div>
+</header>
+<main class="container flow">
+  <section id="hero" class="hero">
+    <h1>Handcrafted Stained &amp; Fused Glass</h1>
+    <p>One-of-a-kind pieces and commissions by Eryc Courmac.</p>
+    <p class="button-row">
+      <a class="button" href="/gallery.html">Browse the Gallery</a>
+      <a class="button button-secondary" href="/commissions.html">Commission a Piece</a>
+    </p>
+  </section>
+
+  <section id="featured" class="card">
+    <h2>Featured: Most Recent Work</h2>
+    <p><strong>Title goes here</strong> — short description (1–2 sentences).</p>
+    <p><a href="/gallery.html#featured">See photos in the Gallery</a></p>
+  </section>
+
+  <section id="highlights" class="card">
+    <h2>What You’ll Find Here</h2>
+    <ul>
+      <li>Stained glass panels, suncatchers, and custom window art</li>
+      <li>Fused glass dishes and decorative pieces</li>
+      <li>Commissions with collaborative design and progress updates</li>
+      <li>Seasonal/event collections when available</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="card">
+    <h2>Interested in a Commission?</h2>
+    <p>Tell me what you’re thinking and I’ll help shape it into a finished piece.</p>
+    <p><a href="/commissions.html">Commission info &amp; process</a></p>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>EFGlassArt</strong> &mdash; stained and fused glass by Eryc Courmac.</p>
+    <p class="muted">© <span id="year"></span> EFGlassArt. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Keep the footer year current.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

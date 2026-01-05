@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Events - EFGlassArt</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/assets/styles.css" />
+  <meta name="description" content="Events and seasonal collections."/>
+
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/index.html" aria-label="EFGlassArt home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">EFGlassArt</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/gallery.html">Gallery</a>
+      <a href="/stained-glass.html">Stained Glass</a>
+      <a href="/fused-glass.html">Fused Glass</a>
+      <a href="/commissions.html">Commissions</a>
+      <a href="/events.html">Events</a>
+      <a href="/about.html">About</a>
+      <a href="/testimonials.html">Testimonials</a>
+    </nav>
+  </div>
+</header>
+<main class="container flow">
+  <header class="page-header">
+    <h1>Events &amp; Seasonal Collections</h1>
+    <p>Limited-time collections and event-specific work (updated as needed).</p>
+  </header>
+
+  <section id="current" class="card">
+    <h2>Currently Featured Collection</h2>
+    <p>Short intro for whatever is “the thing” right now (e.g., NH Renaissance Faire prep or a holiday drop).</p>
+    <div class="gallery-grid"></div>
+  </section>
+
+  <section id="archive" class="card">
+    <h2>Past Seasonal Collections</h2>
+    <p>When a seasonal run ends, we move it here (so you can reuse the page anytime).</p>
+    <div class="gallery-grid"></div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>EFGlassArt</strong> &mdash; stained and fused glass by Eryc Courmac.</p>
+    <p class="muted">© <span id="year"></span> EFGlassArt. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Keep the footer year current.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
