@@ -26,7 +26,14 @@ body{
 .container{
   max-width: 980px;
   margin: 0 auto;
-  padding: 0 18px;
+  padding: 0 18px; /* mobile-friendly default */
+}
+
+/* Slightly wider feel on desktop */
+@media (min-width: 900px){
+  .container{
+    padding: 0 14px;
+  }
 }
 
 .flow > * + *{
@@ -137,6 +144,13 @@ p{ margin: 10px 0; }
   box-shadow: var(--shadow);
 }
 
+/* Slightly tighter on larger screens to reduce “wasted” whitespace */
+@media (min-width: 900px){
+  .card{
+    padding: 14px;
+  }
+}
+
 /* Pills (Gallery filters) */
 .pill-row{
   list-style:none;
@@ -198,21 +212,15 @@ p{ margin: 10px 0; }
 .gallery-grid{
   display: grid;
   gap: 16px;
+  grid-template-columns: 1fr; /* Default: single column on mobile */
 }
 
-/* Default: single column on mobile */
-.gallery-grid{
-  grid-template-columns: 1fr;
-}
-
-/* 2 columns on medium screens */
 @media (min-width: 700px){
   .gallery-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* 3 columns on large screens */
 @media (min-width: 1000px){
   .gallery-grid{
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -298,17 +306,18 @@ p{ margin: 10px 0; }
 
 .meta-list li{ margin: 4px 0; }
 
-/* ===== Testimonials (wider columns, less padding) ===== */
+/* ===== Testimonials (2 columns, wider feel, less padding) ===== */
 .testimonials-grid{
   display: grid;
-  gap: 14px;              /* smaller gap = wider-feeling columns */
+  gap: 14px;
   grid-template-columns: 1fr;
 }
 
+/* Two columns on desktop/tablet; no 3-column mode */
 @media (min-width: 760px){
   .testimonials-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;            /* still roomy on desktop, but not huge */
+    gap: 16px;
   }
 }
 
@@ -318,25 +327,28 @@ p{ margin: 10px 0; }
   border: 1px solid var(--rule);
   border-radius: 12px;
 
-  /* reduced padding, but still clears the big quote mark */
-  padding: 22px 16px 18px 38px;
+  /* Less padding so columns are visually wider */
+  padding: 18px 14px 16px 38px;
 
-  /* slightly easier reading for dense text */
+  /* Dense text reads better */
   line-height: 1.7;
 }
 
+/* Large quote mark stays decorative and never overlaps text */
 .testimonial::before{
   content: "“";
   position: absolute;
-  top: 8px;
+  top: 10px;
   left: 12px;
-  font-size: 56px;        /* slightly smaller so it feels less crowded */
+  font-size: 56px;
   line-height: 1;
   color: var(--rule);
   font-family: Georgia, "Times New Roman", serif;
   z-index: 0;
+  pointer-events: none;
 }
 
+/* Ensure text sits above the decorative quote mark */
 .testimonial p,
 .testimonial footer{
   position: relative;
