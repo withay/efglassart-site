@@ -297,3 +297,33 @@ p{ margin: 10px 0; }
 }
 
 .meta-list li{ margin: 4px 0; }
+/* Testimonials */
+.testimonials-grid{
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px){
+  .testimonials-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.testimonial{
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.testimonial p{
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.testimonial footer{
+  color: var(--muted);
+  font-size: 14px;
+}
