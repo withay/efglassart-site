@@ -1,10 +1,4 @@
-/* EFGlassArt — Styling (Phase 4–7 consolidated)
-   - Featured section: big editorial hero
-   - Gallery grids: consistent 3/2/1 columns
-   - Category highlights (Stained/Fused): smaller 2-column highlight
-*/
-
-/* ---------- Base ---------- */
+/* EFGlassArt — Site styling (unified) */
 
 :root{
   --bg:#fcfbf8;
@@ -12,6 +6,9 @@
   --muted:#555;
   --rule:#e7e2d6;
   --link:#0b4aa2;
+
+  --card:#ffffff;
+  --shadow: 0 1px 0 rgba(0,0,0,0.03);
 }
 
 *{ box-sizing:border-box; }
@@ -25,39 +22,80 @@ body{
   line-height: 1.55;
 }
 
-/* Keep your existing structure working.
-   (Your pages use <main class="container flow"> in places; main itself also exists.) */
-.container{ max-width: 980px; margin: 0 auto; }
-main{
+/* Layout helpers used in your HTML */
+.container{
   max-width: 980px;
   margin: 0 auto;
-  padding: 28px 18px 60px;
+  padding: 0 18px;
 }
 
-/* Spacing between blocks when using .flow */
-.flow > * + *{ margin-top: 14px; }
+.flow > * + *{
+  margin-top: 14px;
+}
 
-header{
-  margin-bottom: 18px;
-  padding-bottom: 14px;
+/* Accessibility helpers */
+.sr-only{
+  position:absolute !important;
+  width:1px; height:1px;
+  padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0);
+  white-space:nowrap; border:0;
+}
+
+.muted{ color: var(--muted); }
+
+/* Header + Nav */
+.site-header{
   border-bottom: 1px solid var(--rule);
+  padding: 18px 0 14px;
+  margin-bottom: 18px;
 }
 
-.site-title{
-  font-size: 28px;
+.site-header .container{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  text-decoration:none;
+  color: inherit;
   font-weight: 700;
-  margin: 0 0 10px 0;
 }
 
-nav a{
-  display:inline-block;
-  margin-right: 10px;
-  margin-bottom: 6px;
+.brand-text{ font-size: 18px; }
+
+.site-nav{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-nav a{
   text-decoration: none;
   color: var(--link);
+  padding: 4px 2px;
 }
 
-nav a:hover{ text-decoration: underline; }
+.site-nav a:hover{ text-decoration: underline; }
+
+/* Main area spacing */
+main.container{
+  padding-top: 10px;
+  padding-bottom: 60px;
+}
+
+/* Page header */
+.page-header{
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 18px;
+}
 
 h1{
   font-size: 44px;
@@ -67,89 +105,50 @@ h1{
 
 h2{
   font-size: 28px;
-  margin: 26px 0 10px;
+  margin: 18px 0 10px;
+}
+
+h3{
+  font-size: 20px;
+  margin: 0 0 8px 0;
 }
 
 p{ margin: 10px 0; }
 
-.small, footer{
-  color: var(--muted);
-  font-size: 14px;
-}
-
-footer{
+/* Footer */
+.site-footer{
   margin-top: 26px;
-  padding-top: 14px;
+  padding: 18px 0 26px;
   border-top: 1px solid var(--rule);
 }
 
-/* Card utility */
+.site-footer .container{
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Card */
 .card{
   border: 1px solid var(--rule);
-  background: #fff;
+  background: var(--card);
   border-radius: 12px;
   padding: 16px;
   margin: 14px 0;
+  box-shadow: var(--shadow);
 }
 
-/* ---------- Featured hero (index + gallery featured) ---------- */
-
-.featured-figure{
-  margin: 0;
-  display: grid;
-  gap: 1rem;
-  align-items: start;
-}
-
-.featured-img{
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-}
-
-.featured-caption h3{
-  margin: 0 0 0.25rem 0;
-}
-
-.featured-desc{
-  margin: 0 0 0.75rem 0;
-}
-
-.featured-meta{
-  margin: 0 0 0.75rem 1.1rem;
-}
-
-@media (min-width: 800px){
-  .featured-figure{
-    grid-template-columns: 1.2fr 1fr;
-  }
-}
-
-/* ---------- Accessibility helpers ---------- */
-
-.sr-only{
-  position: absolute !important;
-  height: 1px; width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
-}
-
-/* ---------- Filter pills (gallery filters) ---------- */
-
+/* Pills (Gallery filters) */
 .pill-row{
-  list-style: none;
-  padding: 0;
+  list-style:none;
+  padding:0;
   margin: 0;
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 .pill{
-  display: inline-block;
+  display:inline-block;
   padding: 6px 10px;
   border: 1px solid var(--rule);
   border-radius: 999px;
@@ -159,76 +158,68 @@ footer{
   font-size: 14px;
 }
 
-.pill:hover{ text-decoration: underline; }
+.pill:hover{
+  text-decoration: underline;
+}
 
-/* ---------- Gallery grids (3/2/1 columns everywhere by default) ---------- */
-
-.gallery-grid{
+/* ===== Featured (Home + Gallery featured) ===== */
+.featured-figure{
+  margin: 0;
   display: grid;
-  gap: 14px;
-  grid-template-columns: 1fr; /* mobile */
-}
-
-/* tablet */
-@media (min-width: 640px){
-  .gallery-grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* desktop (3 columns) */
-@media (min-width: 980px){
-  .gallery-grid{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* ---------- Category highlight layout (Stained + Fused) ---------- */
-/* These sections currently use .gallery-grid but should NOT become 3 columns.
-   We force them into a 1-column stack on mobile, and a 2-column highlight on wide screens. */
-
-#stained .gallery-grid,
-#fused .gallery-grid{
-  grid-template-columns: 1fr;
+  gap: 16px;
   align-items: start;
 }
 
-@media (min-width: 800px){
-  #stained .gallery-grid,
-  #fused .gallery-grid{
-    grid-template-columns: 1.15fr 0.85fr;
-  }
-}
+.featured-figure a{ display:block; }
 
-/* Figure used in Stained/Fused highlight sections */
-.featured-media{
-  margin: 0;
-}
-
-.featured-media img{
-  display: block;
+.featured-img{
+  display:block;
   width: 100%;
   height: auto;
   border-radius: 12px;
   border: 1px solid #ddd;
 }
 
-/* IMPORTANT: caption below image (prevents any “text over picture” issues) */
-.featured-media figcaption{
-  margin-top: 8px;
+.featured-caption h3{ margin: 0 0 6px 0; }
+
+.featured-desc{ margin: 0 0 10px 0; }
+
+.featured-meta{
+  margin: 0 0 10px 1.1rem;
 }
 
-/* Details block used beside the image */
-.featured-details h3{
-  margin: 0 0 6px 0;
+@media (min-width: 800px){
+  .featured-figure{
+    grid-template-columns: 1.2fr 1fr;
+  }
 }
 
-.meta-list{
-  margin: 10px 0 0 1.1rem;
+/* ===== Gallery grids ===== */
+.gallery-grid{
+  display: grid;
+  gap: 16px;
 }
 
-/* ---------- Piece cards (All Work + other category grids) ---------- */
+/* Default: single column on mobile */
+.gallery-grid{
+  grid-template-columns: 1fr;
+}
 
+/* 2 columns on medium screens */
+@media (min-width: 700px){
+  .gallery-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 3 columns on large screens */
+@media (min-width: 1000px){
+  .gallery-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Piece cards (All Work / thumbnail cards) */
 .piece-card{
   border: 1px solid var(--rule);
   background: #fff;
@@ -246,10 +237,6 @@ footer{
   width: 100%;
   height: auto;
   display: block;
-
-  /* Makes all thumbnails look consistent in a 3-column grid */
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
 }
 
 .piece-card .piece-body{
@@ -258,12 +245,55 @@ footer{
 
 .piece-card h3{
   margin: 0 0 6px 0;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.2;
 }
 
 .piece-card .piece-meta{
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
 }
+
+/*
+  IMPORTANT:
+  Your Stained/Fused sections use .gallery-grid too, but they’re a 2-part layout (image + details).
+  We force THAT pattern to behave like a 2-column feature block on larger screens, without breaking
+  the All Work 3-column cards.
+*/
+#stained .gallery-grid,
+#fused .gallery-grid{
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px){
+  #stained .gallery-grid,
+  #fused .gallery-grid{
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+}
+
+/* Featured media block inside those sections */
+.featured-media{
+  margin: 0;
+}
+
+.featured-media a{ display:block; }
+
+.featured-media img{
+  width: 100%;
+  height: auto;
+  display:block;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+/* Details + meta list */
+.featured-details p{ margin-top: 6px; }
+
+.meta-list{
+  margin: 10px 0 0 1.1rem;
+}
+
+.meta-list li{ margin: 4px 0; }
