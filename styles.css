@@ -112,3 +112,55 @@ footer{
     grid-template-columns: 1.2fr 1fr;
   }
 }
+/* Gallery cards (Phase 5) */
+.gallery-grid{
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 700px){
+  .gallery-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1000px){
+  .gallery-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.piece-card{
+  border: 1px solid var(--rule);
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.piece-card a{
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.piece-card img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.piece-card .piece-body{
+  padding: 12px 14px;
+}
+
+.piece-card h3{
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.piece-card .piece-meta{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
