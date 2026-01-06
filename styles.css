@@ -26,14 +26,7 @@ body{
 .container{
   max-width: 980px;
   margin: 0 auto;
-  padding: 0 18px; /* mobile-friendly default */
-}
-
-/* Slightly wider feel on desktop */
-@media (min-width: 900px){
-  .container{
-    padding: 0 14px;
-  }
+  padding: 0 18px;
 }
 
 .flow > * + *{
@@ -73,6 +66,16 @@ body{
   text-decoration:none;
   color: inherit;
   font-weight: 700;
+}
+
+/* Optional brand mark (safe even if empty) */
+.brand-mark{
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+  background: #fff;
+  display: inline-block;
 }
 
 .brand-text{ font-size: 18px; }
@@ -144,13 +147,6 @@ p{ margin: 10px 0; }
   box-shadow: var(--shadow);
 }
 
-/* Slightly tighter on larger screens to reduce “wasted” whitespace */
-@media (min-width: 900px){
-  .card{
-    padding: 14px;
-  }
-}
-
 /* Pills (Gallery filters) */
 .pill-row{
   list-style:none;
@@ -176,7 +172,7 @@ p{ margin: 10px 0; }
   text-decoration: underline;
 }
 
-/* ===== Featured (Home + Gallery featured) ===== */
+/* ===== Featured figure (used on Gallery + Stained Glass + Fused Glass pages) ===== */
 .featured-figure{
   margin: 0;
   display: grid;
@@ -194,9 +190,17 @@ p{ margin: 10px 0; }
   border: 1px solid #ddd;
 }
 
-.featured-caption h3{ margin: 0 0 6px 0; }
+.featured-caption{
+  display:block;
+}
 
-.featured-desc{ margin: 0 0 10px 0; }
+.featured-caption h3{
+  margin: 0 0 6px 0;
+}
+
+.featured-desc{
+  margin: 0 0 10px 0;
+}
 
 .featured-meta{
   margin: 0 0 10px 1.1rem;
@@ -212,15 +216,17 @@ p{ margin: 10px 0; }
 .gallery-grid{
   display: grid;
   gap: 16px;
-  grid-template-columns: 1fr; /* Default: single column on mobile */
+  grid-template-columns: 1fr; /* mobile default */
 }
 
+/* 2 columns on medium screens */
 @media (min-width: 700px){
   .gallery-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* 3 columns on large screens */
 @media (min-width: 1000px){
   .gallery-grid{
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -265,9 +271,9 @@ p{ margin: 10px 0; }
 
 /*
   IMPORTANT:
-  Your Stained/Fused sections use .gallery-grid too, but they’re a 2-part layout (image + details).
-  We force THAT pattern to behave like a 2-column feature block on larger screens, without breaking
-  the All Work 3-column cards.
+  Your Gallery page sections #stained and #fused use .gallery-grid too, but they’re a 2-part layout
+  (image + details). We force THAT pattern to behave like a 2-column feature block on larger screens,
+  without breaking the All Work 3-column cards.
 */
 #stained .gallery-grid,
 #fused .gallery-grid{
@@ -282,7 +288,7 @@ p{ margin: 10px 0; }
   }
 }
 
-/* Featured media block inside those sections */
+/* Featured media block inside those Gallery sections */
 .featured-media{
   margin: 0;
 }
@@ -297,7 +303,7 @@ p{ margin: 10px 0; }
   border: 1px solid #ddd;
 }
 
-/* Details + meta list */
+/* Details + meta list (used in Gallery page sections) */
 .featured-details p{ margin-top: 6px; }
 
 .meta-list{
@@ -306,14 +312,13 @@ p{ margin: 10px 0; }
 
 .meta-list li{ margin: 4px 0; }
 
-/* ===== Testimonials (2 columns, wider feel, less padding) ===== */
+/* ===== Testimonials (wider columns, less padding) ===== */
 .testimonials-grid{
   display: grid;
   gap: 14px;
   grid-template-columns: 1fr;
 }
 
-/* Two columns on desktop/tablet; no 3-column mode */
 @media (min-width: 760px){
   .testimonials-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -326,29 +331,22 @@ p{ margin: 10px 0; }
   background: #fff;
   border: 1px solid var(--rule);
   border-radius: 12px;
-
-  /* Less padding so columns are visually wider */
-  padding: 18px 14px 16px 38px;
-
-  /* Dense text reads better */
+  padding: 22px 16px 18px 38px;
   line-height: 1.7;
 }
 
-/* Large quote mark stays decorative and never overlaps text */
 .testimonial::before{
   content: "“";
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: 12px;
   font-size: 56px;
   line-height: 1;
   color: var(--rule);
   font-family: Georgia, "Times New Roman", serif;
   z-index: 0;
-  pointer-events: none;
 }
 
-/* Ensure text sits above the decorative quote mark */
 .testimonial p,
 .testimonial footer{
   position: relative;
