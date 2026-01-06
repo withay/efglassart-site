@@ -376,3 +376,23 @@ p{ margin: 10px 0; }
   font-size: 14px;
   font-style: italic;
 }
+
+/* About page artist layout */
+.about-artist {
+  display: grid;
+  gap: 16px;
+}
+
+.about-photo {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+}
+
+@media (min-width: 700px) {
+  .about-artist {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+  }
+}
