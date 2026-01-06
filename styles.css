@@ -297,102 +297,114 @@ p{ margin: 10px 0; }
 }
 
 .meta-list li{ margin: 4px 0; }
-/* Testimonials */
+
+/* ===== Testimonials ===== */
 .testimonials-grid{
   display: grid;
-  gap: 16px;
+  gap: 18px;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 800px){
+@media (min-width: 700px){
   .testimonials-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+@media (min-width: 1000px){
+  .testimonials-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .testimonial{
-  margin: 0;
-  padding: 14px 16px;
+  position: relative;
+  background: #fff;
   border: 1px solid var(--rule);
   border-radius: 12px;
-  background: #fff;
+
+  /* Key fix: more top/left padding so the big quote never overlaps text */
+  padding: 36px 20px 22px 52px;
+
+  line-height: 1.6;
+}
+
+.testimonial::before{
+  content: "“";
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--rule);
+  font-family: Georgia, "Times New Roman", serif;
+
+  /* Safety: keep it behind the text even if someone changes padding later */
+  z-index: 0;
+}
+
+.testimonial p,
+.testimonial footer{
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial p{
-  margin: 0 0 10px 0;
+  margin: 0 0 14px;
   font-size: 16px;
 }
 
 .testimonial footer{
   color: var(--muted);
   font-size: 14px;
-}
-
-/* Testimonials polish */
-
-.testimonials-grid {
-  display: grid;
-  gap: 18px;
-}
-
-@media (min-width: 700px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1000px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.testimonial {
-  position: relative;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 26px 20px 22px 44px;
-  line-height: 1.6;
-}
-
-.testimonial::before {
-  content: "“";
-  position: absolute;
-  top: 8px;
-  left: 16px;
-  font-size: 64px;
-  line-height: 1;
-  color: var(--rule);
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.testimonial p {
-  margin: 0 0 14px;
-}
-
-.testimonial footer {
-  color: var(--muted);
-  font-size: 14px;
   font-style: italic;
 }
 
-/* About page artist layout */
-.about-artist {
+/* ===== About page artist layout ===== */
+.about-artist{
   display: grid;
   gap: 16px;
 }
 
-.about-photo {
+.about-photo{
   width: 100%;
   max-width: 260px;
   border-radius: 12px;
   border: 1px solid var(--rule);
 }
 
-@media (min-width: 700px) {
-  .about-artist {
+/* Optional About photo polish (matches Gallery image feel) */
+.about-img{
+  display:block;
+  width:100%;
+  max-width: 360px;
+  height:auto;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  margin: 4px 0 0 0;
+}
+
+@media (min-width: 700px){
+  .about-artist{
     grid-template-columns: auto 1fr;
     align-items: start;
   }
+}
+
+/* CTA link that looks like a tasteful button */
+.cta-link{
+  display:inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--link);
+}
+
+.cta-link:hover{
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
 }
