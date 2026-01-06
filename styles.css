@@ -298,23 +298,23 @@ p{ margin: 10px 0; }
 
 .meta-list li{ margin: 4px 0; }
 
-/* ===== Testimonials ===== */
+/* ===== Testimonials (READABLE 2-column layout) ===== */
 .testimonials-grid{
   display: grid;
   gap: 18px;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 700px){
+/* 2 columns on medium+ screens, and we STOP there (no 3-column) */
+@media (min-width: 760px){
   .testimonials-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1000px){
-  .testimonials-grid{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+/* Slightly reduce the text size on small screens for long quotes */
+@media (max-width: 420px){
+  .testimonial p{ font-size: 15px; }
 }
 
 .testimonial{
@@ -323,10 +323,10 @@ p{ margin: 10px 0; }
   border: 1px solid var(--rule);
   border-radius: 12px;
 
-  /* Key fix: more top/left padding so the big quote never overlaps text */
-  padding: 36px 20px 22px 52px;
+  /* More breathing room for long-form testimonials */
+  padding: 34px 20px 22px 52px;
 
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .testimonial::before{
@@ -338,8 +338,6 @@ p{ margin: 10px 0; }
   line-height: 1;
   color: var(--rule);
   font-family: Georgia, "Times New Roman", serif;
-
-  /* Safety: keep it behind the text even if someone changes padding later */
   z-index: 0;
 }
 
