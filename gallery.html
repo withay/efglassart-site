@@ -46,7 +46,7 @@
     </ul>
   </section>
 
-  <!-- Featured stays Tree of Life (site-wide current highlight) -->
+  <!-- Featured stays Tree of Life -->
   <section id="featured" class="card">
     <h2>Featured: Most Recent Work</h2>
     <p>(This section gets replaced when you complete the next piece.)</p>
@@ -63,7 +63,7 @@
           class="featured-img"
           loading="lazy"
           decoding="async"
-          style="max-height: 420px; object-fit: cover;"
+          style="max-height:420px; object-fit:cover;"
         />
       </a>
 
@@ -282,31 +282,6 @@
       </article>
     </div>
   </section>
-
-  <section id="stained" class="card">
-    <h2>Stained Glass</h2>
-    <p class="muted">We’ll curate a subset here next (so visitors can browse by medium quickly).</p>
-  </section>
-
-  <section id="fused" class="card">
-    <h2>Fused Glass</h2>
-    <p class="muted">We’ll curate a subset here next (functional vs decorative, etc.).</p>
-  </section>
-
-  <section id="commissions" class="card">
-    <h2>Commissioned Pieces</h2>
-    <p class="muted">We’ll add commissioned examples here as you choose them.</p>
-  </section>
-
-  <section id="events" class="card">
-    <h2>Events / Seasonal Collections</h2>
-    <p class="muted">We’ll add event/seasonal groups here (Renn Faire, holidays, etc.).</p>
-  </section>
-
-  <section id="sunapee" class="card">
-    <h2>Sunapee Rock Shop (Exclusive Work)</h2>
-    <p class="muted">We’ll add Sunapee-specific pieces here once you pick that set.</p>
-  </section>
 </main>
 
 <footer class="site-footer">
@@ -316,9 +291,9 @@
   </div>
 </footer>
 
-<!-- Lightbox (used site-wide) -->
-<div id="lightbox" hidden
-  style="position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; padding:22px; z-index:9999;">
+<!-- Lightbox -->
+<div id="lightbox"
+  style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); align-items:center; justify-content:center; padding:22px; z-index:9999;">
   <div style="max-width:min(1100px, 96vw); width:100%; position:relative;">
     <button id="lightboxClose" aria-label="Close"
       style="position:absolute; top:-10px; right:-10px; width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.35); background:rgba(0,0,0,.45); color:#fff; font-size:22px; cursor:pointer;">
@@ -334,10 +309,8 @@
 </div>
 
 <script>
-  // Keep the footer year current.
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Lightbox
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightboxImg');
   const lbCap = document.getElementById('lightboxCaption');
@@ -346,12 +319,12 @@
   function openLightbox(src, caption){
     lbImg.src = src;
     lbCap.textContent = caption || "";
-    lb.hidden = false;
+    lb.style.display = "flex";
     document.body.style.overflow = "hidden";
   }
 
   function closeLightbox(){
-    lb.hidden = true;
+    lb.style.display = "none";
     lbImg.src = "";
     lbCap.textContent = "";
     document.body.style.overflow = "";
@@ -366,7 +339,7 @@
 
   lbClose.addEventListener('click', closeLightbox);
   lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
-  document.addEventListener('keydown', (e) => { if (!lb.hidden && e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (lb.style.display !== "none" && e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>
