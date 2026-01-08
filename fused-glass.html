@@ -77,7 +77,7 @@
           class="featured-img"
           loading="lazy"
           decoding="async"
-          style="max-height: 420px; object-fit: cover;"
+          style="max-height:420px; object-fit:cover;"
         />
       </a>
 
@@ -99,28 +99,6 @@
       </figcaption>
     </figure>
   </section>
-
-  <section class="card">
-    <h2>Care &amp; Use</h2>
-    <p>
-      Many fused pieces are functional, but care still matters. I provide guidance with every purchase,
-      including cleaning and display suggestions.
-    </p>
-    <ul>
-      <li>Cleaning recommendations (and what to avoid)</li>
-      <li>Food-safe notes (when applicable)</li>
-      <li>How to display for best light and color</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <h2>Explore</h2>
-    <ul>
-      <li><a href="/gallery.html#all">Browse fused glass in the Gallery</a></li>
-      <li><a href="/testimonials.html">Read Testimonials</a></li>
-      <li><a href="/events.html">Events &amp; seasonal collections</a></li>
-    </ul>
-  </section>
 </main>
 
 <footer class="site-footer">
@@ -130,9 +108,9 @@
   </div>
 </footer>
 
-<!-- Lightbox (same as Gallery) -->
-<div id="lightbox" hidden
-  style="position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; padding:22px; z-index:9999;">
+<!-- Lightbox -->
+<div id="lightbox"
+  style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); align-items:center; justify-content:center; padding:22px; z-index:9999;">
   <div style="max-width:min(1100px, 96vw); width:100%; position:relative;">
     <button id="lightboxClose" aria-label="Close"
       style="position:absolute; top:-10px; right:-10px; width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.35); background:rgba(0,0,0,.45); color:#fff; font-size:22px; cursor:pointer;">
@@ -158,12 +136,12 @@
   function openLightbox(src, caption){
     lbImg.src = src;
     lbCap.textContent = caption || "";
-    lb.hidden = false;
+    lb.style.display = "flex";
     document.body.style.overflow = "hidden";
   }
 
   function closeLightbox(){
-    lb.hidden = true;
+    lb.style.display = "none";
     lbImg.src = "";
     lbCap.textContent = "";
     document.body.style.overflow = "";
@@ -178,7 +156,7 @@
 
   lbClose.addEventListener('click', closeLightbox);
   lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
-  document.addEventListener('keydown', (e) => { if (!lb.hidden && e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (lb.style.display !== "none" && e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>
