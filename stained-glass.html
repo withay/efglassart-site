@@ -31,19 +31,12 @@
 <main class="container flow">
   <header class="page-header">
     <h1>Stained Glass</h1>
-    <p>
-      Panels, suncatchers, and custom window art — built around color, texture,
-      and what the piece becomes when the light hits it.
-    </p>
+    <p>Panels, suncatchers, and custom window art — built around color, texture, and what the piece becomes when the light hits it.</p>
   </header>
 
   <section class="card">
     <h2>What I Make</h2>
-    <p>
-      My stained glass work ranges from small hanging pieces to larger window panels.
-      I love designs with strong silhouettes, intentional linework, and glass choices
-      that feel alive in sunlight.
-    </p>
+    <p>My stained glass work ranges from small hanging pieces to larger window panels. I love designs with strong silhouettes, intentional linework, and glass choices that feel alive in sunlight.</p>
     <ul>
       <li>Window panels (framed or ready to hang)</li>
       <li>Suncatchers and hanging art pieces</li>
@@ -54,11 +47,7 @@
 
   <section class="card">
     <h2>Style &amp; Materials</h2>
-    <p>
-      Glass isn’t just color — it’s texture, transparency, and movement.
-      For each piece, I select glass based on how it behaves in real light
-      (not just under studio lamps).
-    </p>
+    <p>Glass isn’t just color — it’s texture, transparency, and movement. For each piece, I select glass based on how it behaves in real light (not just under studio lamps).</p>
     <ul>
       <li><strong>Texture</strong> for sparkle, diffusion, and depth</li>
       <li><strong>Transparency</strong> to control brightness and privacy</li>
@@ -71,22 +60,25 @@
     <h2>Featured Example</h2>
 
     <figure class="featured-figure">
-      <a href="/assets/images/gallery/sg-chrono-window.jpg">
+      <a
+        href="/assets/images/gallery/sg-chrono-window.jpg"
+        data-lightbox
+        data-caption="Chrono Window Panel — stained glass • 2026"
+      >
         <img
           src="/assets/images/gallery/sg-chrono-window.jpg"
-          alt="Chrono stained glass window panel"
+          alt="Chrono Window Panel stained glass"
           class="featured-img"
           loading="lazy"
           decoding="async"
+          style="max-height:520px; object-fit:contain;"
         />
       </a>
 
       <figcaption class="featured-caption">
         <h3>Chrono Window Panel</h3>
-
         <p class="featured-desc">
-          Vertical stained glass panel designed for a narrow window, balancing bold color,
-          strong linework, and changing light throughout the day.
+          Vertical stained glass panel designed for a narrow window, balancing bold color, strong linework, and changing light throughout the day.
         </p>
 
         <ul class="featured-meta">
@@ -96,62 +88,69 @@
         </ul>
 
         <p style="margin-top:12px;">
-          <a href="/gallery.html#stained"><strong>See more stained glass in the Gallery →</strong></a>
+          <a href="/gallery.html#all"><strong>See more stained glass in the Gallery →</strong></a>
         </p>
       </figcaption>
     </figure>
-  </section>
-
-  <section class="card">
-    <h2>Commissioning Stained Glass</h2>
-    <p>
-      If you’re commissioning a stained glass piece, we’ll talk through the space it’s going in,
-      how much light it gets, and what you want it to feel like in the room.
-    </p>
-    <ul>
-      <li>Where it will hang (window, wall, lighted display)</li>
-      <li>Approximate size and orientation</li>
-      <li>Color palette, mood, and symbols/themes</li>
-      <li>Whether you want full transparency or more privacy</li>
-    </ul>
-    <p>
-      <a href="/commissions.html"><strong>Learn about the commission process →</strong></a>
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>Care &amp; Display</h2>
-    <p>
-      Stained glass is durable, but placement and cleaning matter.
-      I include care instructions with every piece and I’m always happy
-      to advise on hanging, framing, and lighting.
-    </p>
-    <ul>
-      <li>How to clean safely (and what to avoid)</li>
-      <li>Where it looks best (direct sun vs. ambient light)</li>
-      <li>Display options: hanging, framing, or backlighting</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <h2>Explore</h2>
-    <ul>
-      <li><a href="/gallery.html#stained">Browse stained glass in the Gallery</a></li>
-      <li><a href="/testimonials.html">Read Testimonials</a></li>
-      <li><a href="/commissions.html">Commission a piece</a></li>
-    </ul>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="container">
-    <p><strong>EFGlassArt</strong> — Stained and Fused glass by Eryc Courmac.</p>
+    <p><strong>EFGlassArt</strong> — Stained and fused glass by Eryc Courmac.</p>
     <p class="muted">© <span id="year"></span> EFGlassArt. All rights reserved.</p>
   </div>
 </footer>
 
+<!-- Lightbox -->
+<div id="lightbox"
+  style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); align-items:center; justify-content:center; padding:22px; z-index:9999;">
+  <div style="max-width:min(1100px, 96vw); width:100%; position:relative;">
+    <button id="lightboxClose" aria-label="Close"
+      style="position:absolute; top:-10px; right:-10px; width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.35); background:rgba(0,0,0,.45); color:#fff; font-size:22px; cursor:pointer;">
+      ×
+    </button>
+
+    <img id="lightboxImg" alt=""
+      style="display:block; width:100%; height:auto; max-height:85vh; border-radius:12px; background:#111;">
+
+    <p id="lightboxCaption"
+      style="margin:10px 0 0; color:rgba(255,255,255,.9); font-size:14px; line-height:1.4;"></p>
+  </div>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbCap = document.getElementById('lightboxCaption');
+  const lbClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, caption){
+    lbImg.src = src;
+    lbCap.textContent = caption || "";
+    lb.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox(){
+    lb.style.display = "none";
+    lbImg.src = "";
+    lbCap.textContent = "";
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[data-lightbox]');
+    if (!a) return;
+    e.preventDefault();
+    openLightbox(a.getAttribute('href'), a.getAttribute('data-caption'));
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (lb.style.display !== "none" && e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>
