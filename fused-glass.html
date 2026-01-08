@@ -66,20 +66,25 @@
     <h2>Featured Example</h2>
 
     <figure class="featured-figure">
-      <a href="/gallery.html#lb-fg-black-white-woven-bowl">
+      <a
+        href="/assets/images/gallery/fg-black-white-woven-bowl.jpg"
+        data-lightbox
+        data-caption="Black &amp; White Woven Bowl — fused glass"
+      >
         <img
           src="/assets/images/gallery/fg-black-white-woven-bowl.jpg"
           alt="Black and white woven fused glass bowl"
           class="featured-img"
           loading="lazy"
           decoding="async"
+          style="max-height: 420px; object-fit: cover;"
         />
       </a>
 
       <figcaption class="featured-caption">
         <h3>Black &amp; White Woven Bowl</h3>
         <p class="featured-desc">
-          High-contrast woven pattern with a clean, modern feel—shifts from bold to subtle depending on the light.
+          Kiln-formed bowl with bold woven patterning and strong light/dark contrast.
         </p>
 
         <ul class="featured-meta">
@@ -93,23 +98,6 @@
         </p>
       </figcaption>
     </figure>
-  </section>
-
-  <section class="card">
-    <h2>Commissions &amp; Custom Work</h2>
-    <p>
-      Fused commissions can be practical (a dish/tray) or purely decorative. If you have a space, a color palette,
-      or a theme in mind, we can build around it.
-    </p>
-    <ul>
-      <li>Size + function (decorative vs. usable dish/tray)</li>
-      <li>Colors, patterns, and how bold/subtle you want it</li>
-      <li>Whether it should be transparent, opaque, or mixed</li>
-      <li>Timeline (kiln schedules can influence lead time)</li>
-    </ul>
-    <p>
-      <a href="/commissions.html"><strong>Learn about the commission process →</strong></a>
-    </p>
   </section>
 
   <section class="card">
@@ -128,7 +116,7 @@
   <section class="card">
     <h2>Explore</h2>
     <ul>
-      <li><a href="/gallery.html#fused">Browse fused glass in the Gallery</a></li>
+      <li><a href="/gallery.html#all">Browse fused glass in the Gallery</a></li>
       <li><a href="/testimonials.html">Read Testimonials</a></li>
       <li><a href="/events.html">Events &amp; seasonal collections</a></li>
     </ul>
@@ -137,13 +125,60 @@
 
 <footer class="site-footer">
   <div class="container">
-    <p><strong>EFGlassArt</strong> — Stained and fused glass by Eryc Courmac.</p>
+    <p><strong>EFGlassArt</strong> — stained and fused glass by Eryc Courmac.</p>
     <p class="muted">© <span id="year"></span> EFGlassArt. All rights reserved.</p>
   </div>
 </footer>
 
+<!-- Lightbox (same as Gallery) -->
+<div id="lightbox" hidden
+  style="position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; padding:22px; z-index:9999;">
+  <div style="max-width:min(1100px, 96vw); width:100%; position:relative;">
+    <button id="lightboxClose" aria-label="Close"
+      style="position:absolute; top:-10px; right:-10px; width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.35); background:rgba(0,0,0,.45); color:#fff; font-size:22px; cursor:pointer;">
+      ×
+    </button>
+
+    <img id="lightboxImg" alt=""
+      style="display:block; width:100%; height:auto; max-height:85vh; border-radius:12px; background:#111;">
+
+    <p id="lightboxCaption"
+      style="margin:10px 0 0; color:rgba(255,255,255,.9); font-size:14px; line-height:1.4;"></p>
+  </div>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbCap = document.getElementById('lightboxCaption');
+  const lbClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, caption){
+    lbImg.src = src;
+    lbCap.textContent = caption || "";
+    lb.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox(){
+    lb.hidden = true;
+    lbImg.src = "";
+    lbCap.textContent = "";
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[data-lightbox]');
+    if (!a) return;
+    e.preventDefault();
+    openLightbox(a.getAttribute('href'), a.getAttribute('data-caption'));
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (!lb.hidden && e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>
