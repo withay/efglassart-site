@@ -178,16 +178,29 @@ p{ margin: 10px 0; }
   display: grid;
   gap: 16px;
   align-items: start;
+
+  /* polish: prevents odd overflows / “scrollbar” artifacts */
+  overflow: hidden;
 }
 
-.featured-figure a{ display:block; }
+.featured-figure a{
+  display:block;
+
+  /* polish: makes the image feel framed (gallery-like) */
+  border-radius: 12px;
+  overflow: hidden;
+}
 
 .featured-img{
   display:block;
   width: 100%;
+  max-width: 100%;
   height: auto;
+
+  /* polish: consistent “frame” with the site’s card borders */
   border-radius: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--rule);
+  background: #fff;
 }
 
 .featured-caption{
