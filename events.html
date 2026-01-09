@@ -32,16 +32,16 @@
   <header class="page-header">
     <h1>Events &amp; Seasonal Collections</h1>
     <p>
-      Where I share booth setups, seasonal runs, and limited collections — so the “current spotlight” can change
-      without reworking the whole site.
+      Where I share booth setups, seasonal runs, and limited collections — a snapshot of what you’ll find
+      throughout the year.
     </p>
   </header>
 
   <section class="card">
     <h2>How This Page Works</h2>
     <ul>
-      <li><strong>Current Spotlight</strong> is what I’m actively making or preparing right now.</li>
       <li><strong>Event sections</strong> show what I bring, how I display, and examples of what you’ll find.</li>
+      <li><strong>Seasonal</strong> highlights small-batch runs (like holiday ornaments).</li>
       <li>If you’re looking for a specific piece, the <a href="/gallery.html">Gallery</a> is the best place to browse.</li>
     </ul>
     <p class="muted" style="margin-top:12px;">
@@ -49,65 +49,15 @@
     </p>
   </section>
 
-  <!-- ===================== CURRENT SPOTLIGHT ===================== -->
-  <section id="current" class="card">
-    <h2>Current Spotlight</h2>
-    <p>
-      This is the section I update most often. Right now it highlights a mix of what I sell at events and what’s
-      available seasonally.
-    </p>
-
-    <div class="gallery-grid">
-      <article class="piece-card">
-        <a
-          href="/assets/images/events/renn-faire/rf-booth.jpg"
-          data-lightbox
-          data-caption="New Hampshire Renaissance Faire — booth setup"
-        >
-          <img src="/assets/images/events/renn-faire/rf-booth.jpg" alt="EFGlassArt booth setup at the New Hampshire Renaissance Faire" loading="lazy" decoding="async">
-          <div class="piece-body">
-            <h3>Renaissance Faire Prep</h3>
-            <p class="piece-meta">Event spotlight</p>
-            <p class="piece-desc">A look at my booth and the kinds of pieces I bring each spring.</p>
-          </div>
-        </a>
-      </article>
-
-      <article class="piece-card">
-        <a
-          href="/assets/images/events/danville-holiday/hf-ornaments.jpg"
-          data-lightbox
-          data-caption="Holiday ornaments — fused glass"
-        >
-          <img src="/assets/images/events/danville-holiday/hf-ornaments.jpg" alt="Fused glass holiday ornaments" loading="lazy" decoding="async">
-          <div class="piece-body">
-            <h3>Holiday Ornaments</h3>
-            <p class="piece-meta">Seasonal</p>
-            <p class="piece-desc">Small fused pieces designed for gifting, decorating, and easy shipping or delivery.</p>
-          </div>
-        </a>
-      </article>
-
-      <article class="piece-card">
-        <a
-          href="/assets/images/events/sunapee-rock-shop/rs-stick-flower-display.jpg"
-          data-lightbox
-          data-caption="Sunapee Rock Shop — exclusive stained glass flowers on a stick"
-        >
-          <img src="/assets/images/events/sunapee-rock-shop/rs-stick-flower-display.jpg" alt="Display of stained glass flowers on a stick for Sunapee Rock Shop" loading="lazy" decoding="async">
-          <div class="piece-body">
-            <h3>Sunapee Rock Shop Exclusives</h3>
-            <p class="piece-meta">Year-round</p>
-            <p class="piece-desc">Wholesale work I create specifically for the shop (availability varies).</p>
-          </div>
-        </a>
-      </article>
-    </div>
-
-    <p style="margin-top:14px;">
-      <a href="/gallery.html"><strong>Browse the Gallery →</strong></a>
-      <span class="muted"> (I add new photos as pieces are completed.)</span>
-    </p>
+  <!-- ===================== JUMP LINKS (OPTION B) ===================== -->
+  <section class="card" aria-label="Jump to section">
+    <h2 class="sr-only">Jump to section</h2>
+    <ul class="pill-row">
+      <li><a class="pill" href="#renfaire">Renaissance Faire</a></li>
+      <li><a class="pill" href="#wolfcrest">Wolf Crest</a></li>
+      <li><a class="pill" href="#danville">Danville Holiday</a></li>
+      <li><a class="pill" href="#sunapee">Sunapee Rock Shop</a></li>
+    </ul>
   </section>
 
   <!-- ===================== NH RENAISSANCE FAIRE ===================== -->
@@ -125,7 +75,19 @@
           <div class="piece-body">
             <h3>Booth Overview</h3>
             <p class="piece-meta">Event photo</p>
-            <p class="piece-desc">How the display comes together inside the tent.</p>
+            <p class="piece-desc">A look at the booth layout and how the display comes together inside the tent.</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Moved here from “Current Spotlight” (same category as booth overview) -->
+      <article class="piece-card">
+        <a href="/assets/images/events/renn-faire/rf-booth.jpg" data-lightbox data-caption="New Hampshire Renaissance Faire — booth setup">
+          <img src="/assets/images/events/renn-faire/rf-booth.jpg" alt="EFGlassArt booth setup at the New Hampshire Renaissance Faire" loading="lazy" decoding="async">
+          <div class="piece-body">
+            <h3>Booth Overview</h3>
+            <p class="piece-meta">Event photo</p>
+            <p class="piece-desc">A look at the booth layout and how the display comes together inside the tent.</p>
           </div>
         </a>
       </article>
@@ -213,10 +175,9 @@
     </p>
 
     <p style="margin-top:12px;">
-      <strong>Booth note:</strong> I share my booth with my sister, a published author.
+      <strong>Booth note:</strong> I share my booth with my sister, <strong>Kim Alexander</strong>, a published author.
       <span class="muted">You can find her work here:</span>
-      <a href="https://kimalexanderonline.com/wp/" target="_blank" rel="noopener">her website</a>
-      <span class="muted">(replace this link with her real URL)</span>
+      <a href="https://kimalexanderonline.com/wp/" target="_blank" rel="noopener">kimalexanderonline.com</a>
     </p>
   </section>
 
@@ -278,35 +239,36 @@
     </p>
 
     <div class="gallery-grid">
+      <!-- Flowers on a Stick category (3 photos, same description) -->
       <article class="piece-card">
         <a href="/assets/images/events/sunapee-rock-shop/rs-stick-flower-display.jpg" data-lightbox data-caption="Sunapee Rock Shop — flowers on a stick (display)">
           <img src="/assets/images/events/sunapee-rock-shop/rs-stick-flower-display.jpg" alt="Display of stained glass flowers on a stick" loading="lazy" decoding="async">
           <div class="piece-body">
             <h3>Flowers on a Stick</h3>
             <p class="piece-meta">Stained glass (exclusive)</p>
-            <p class="piece-desc">Made specifically for Sunapee Rock Shop.</p>
+            <p class="piece-desc">Multiple colorways and styles made specifically for Sunapee Rock Shop.</p>
           </div>
         </a>
       </article>
 
       <article class="piece-card">
-        <a href="/assets/images/events/sunapee-rock-shop/rs-stick-flowers-in-vase-1.jpg" data-lightbox data-caption="Sunapee Rock Shop — stick flowers in vase">
-          <img src="/assets/images/events/sunapee-rock-shop/rs-stick-flowers-in-vase-1.jpg" alt="Stained glass stick flowers arranged in a vase" loading="lazy" decoding="async">
+        <a href="/assets/images/events/sunapee-rock-shop/rs-stick-flowers-in-vase-1.jpg" data-lightbox data-caption="Sunapee Rock Shop — flowers on a stick (in vase)">
+          <img src="/assets/images/events/sunapee-rock-shop/rs-stick-flowers-in-vase-1.jpg" alt="Stained glass flowers on a stick arranged in a vase" loading="lazy" decoding="async">
           <div class="piece-body">
-            <h3>Stick Flowers (Vase)</h3>
-            <p class="piece-meta">Stained glass</p>
-            <p class="piece-desc">An easy way to display multiple stems together.</p>
+            <h3>Flowers on a Stick</h3>
+            <p class="piece-meta">Stained glass (exclusive)</p>
+            <p class="piece-desc">Multiple colorways and styles made specifically for Sunapee Rock Shop.</p>
           </div>
         </a>
       </article>
 
       <article class="piece-card">
-        <a href="/assets/images/events/sunapee-rock-shop/rs-stick-flowers-in-vase-2.jpg" data-lightbox data-caption="Sunapee Rock Shop — stick flowers in vase (alternate)">
-          <img src="/assets/images/events/sunapee-rock-shop/rs-stick-flowers-in-vase-2.jpg" alt="Alternate arrangement of stained glass stick flowers in a vase" loading="lazy" decoding="async">
+        <a href="/assets/images/events/sunapee-rock-shop/rs-stick-flowers-in-vase-2.jpg" data-lightbox data-caption="Sunapee Rock Shop — flowers on a stick (in vase, alternate)">
+          <img src="/assets/images/events/sunapee-rock-shop/rs-stick-flowers-in-vase-2.jpg" alt="Alternate arrangement of stained glass flowers on a stick in a vase" loading="lazy" decoding="async">
           <div class="piece-body">
-            <h3>Stick Flowers (Alternate)</h3>
-            <p class="piece-meta">Stained glass</p>
-            <p class="piece-desc">Different colors and combinations depending on the run.</p>
+            <h3>Flowers on a Stick</h3>
+            <p class="piece-meta">Stained glass (exclusive)</p>
+            <p class="piece-desc">Multiple colorways and styles made specifically for Sunapee Rock Shop.</p>
           </div>
         </a>
       </article>
@@ -355,6 +317,7 @@
         </a>
       </article>
 
+      <!-- IMPORTANT: your uploaded file name includes "=" -->
       <article class="piece-card">
         <a href="/assets/images/events/sunapee-rock-shop/rs-blue-clear-square.jpg" data-lightbox data-caption="Sunapee Rock Shop — blue/clear square (stained glass)">
           <img src="/assets/images/events/sunapee-rock-shop/rs-blue-clear-square.jpg" alt="Blue and clear stained glass square" loading="lazy" decoding="async">
