@@ -327,38 +327,7 @@
   </div>
 </div>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+<script src="/lightbox.js" defer></script>
 
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightboxImg');
-  const lbCap = document.getElementById('lightboxCaption');
-  const lbClose = document.getElementById('lightboxClose');
-
-  function openLightbox(src, caption){
-    lbImg.src = src;
-    lbCap.textContent = caption || "";
-    lb.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeLightbox(){
-    lb.style.display = "none";
-    lbImg.src = "";
-    lbCap.textContent = "";
-    document.body.style.overflow = "";
-  }
-
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[data-lightbox]');
-    if (!a) return;
-    e.preventDefault();
-    openLightbox(a.getAttribute('href'), a.getAttribute('data-caption'));
-  });
-
-  lbClose.addEventListener('click', closeLightbox);
-  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
-  document.addEventListener('keydown', (e) => { if (lb.style.display !== "none" && e.key === 'Escape') closeLightbox(); });
-</script>
 </body>
 </html>
