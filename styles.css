@@ -278,6 +278,25 @@ p{ margin: 10px 0; }
   font-size: 14px;
 }
 
+/* Gallery card descriptions */
+.piece-card .piece-desc{
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* Subtle hover + keyboard focus polish */
+.piece-card a:hover h3{
+  text-decoration: underline;
+}
+
+.piece-card a:focus-visible{
+  outline: 2px solid rgba(11,74,162,.35);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
 /* ===== Testimonials (wider columns, less padding) ===== */
 .testimonials-grid{
   display: grid;
