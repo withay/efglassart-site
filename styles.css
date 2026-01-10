@@ -137,6 +137,22 @@ p{ margin: 10px 0; }
   color: var(--muted);
 }
 
+/* Footer contact card */
+.footer-contact{
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.footer-contact a{
+  color: var(--link);
+  text-decoration: none;
+}
+
+.footer-contact a:hover{
+  text-decoration: underline;
+}
+
+
 /* Card */
 .card{
   border: 1px solid var(--rule);
