@@ -80,6 +80,12 @@ body{
 
 .brand-text{ font-size: 18px; }
 
+.brand-logo{
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
 .site-nav{
   display:flex;
   gap: 12px;
