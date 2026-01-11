@@ -615,6 +615,51 @@ body{
   cursor: pointer;
 }
 
+/* =========================
+   Nav refinement: larger + tighter + pill hover
+   ========================= */
+
+/* Tighter spacing between links */
+.site-nav{
+  gap: 10px; /* was 14px */
+}
+
+/* Stronger nav links */
+.site-nav a{
+  font-size: 16px;          /* slightly larger */
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  padding: 6px 10px;        /* tighter horizontally, still comfy */
+  border-radius: 999px;     /* pill shape */
+  transition:
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+/* Remove underline bar effect (pill replaces it) */
+.site-nav a::after{
+  display: none;
+}
+
+/* Hover / focus pill */
+.site-nav a:hover,
+.site-nav a:focus-visible{
+  background: rgba(11,74,162,0.10); /* subtle blue pill */
+}
+
+/* Current page: stronger pill */
+.site-nav a[aria-current="page"]{
+  color: var(--text);
+  background: rgba(11,74,162,0.18);
+}
+
+/* Keyboard focus still clear */
+.site-nav a:focus-visible{
+  outline: 2px solid rgba(11,74,162,0.35);
+  outline-offset: 2px;
+}
+
+
 .lightbox__close:hover{
   background: rgba(0,0,0,0.55);
 }
