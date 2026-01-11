@@ -1,14 +1,14 @@
 /* EFGlassArt — Site styling (unified) */
 
 :root{
-  --bg:#fcfbf8;
+  --bg:#e6eaef;              /* pale slate grey */
   --text:#1b1b1b;
   --muted:#555;
   --rule:#e7e2d6;
   --link:#0b4aa2;
 
   --card:#ffffff;
-  --shadow: 0 1px 0 rgba(0,0,0,0.03);
+  --shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
 *{ box-sizing:border-box; }
