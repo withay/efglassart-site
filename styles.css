@@ -491,6 +491,115 @@ p{ margin: 10px 0; }
   line-height: 1.4;
   text-align: center;
 }
+/* =========================
+   EFGlassArt polish pass
+   Drop-in override (paste at END of styles.css)
+   ========================= */
+
+/* 1) Background: subtle texture + slightly richer divider color */
+:root{
+  /* Dividers slightly cooler/tinted */
+  --rule: #d7dbe2;           /* was #e7e2d6 */
+  --rule-strong: #c7ced8;    /* used for stronger separators */
+}
+
+/* subtle “paper” texture (very low contrast) */
+body{
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, rgba(0,0,0,0) 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0));
+  background-size: 26px 26px, 100% 240px;
+  background-attachment: fixed, scroll;
+}
+
+/* 2) Tinted / slightly stronger section dividers */
+.page-header{
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.site-header{
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.site-footer{
+  border-top: 1px solid var(--rule-strong);
+}
+
+/* 3) Subtle hover lift for “cards” and gallery tiles */
+.card,
+.piece-card{
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.card:hover,
+.piece-card:hover{
+  transform: translateY(-2px);
+  border-color: var(--rule-strong);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.03),
+    0 10px 22px rgba(0,0,0,0.06);
+}
+
+/* Don’t lift on touch devices where hover is weird */
+@media (hover: none){
+  .card:hover,
+  .piece-card:hover{
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+}
+
+/* 4) Stronger nav links: bigger, bolder, clearer active state */
+.site-nav{
+  gap: 14px; /* a touch more breathing room */
+}
+
+.site-nav a{
+  font-size: 15px;      /* was default */
+  font-weight: 700;     /* stronger */
+  letter-spacing: 0.2px;
+  padding: 6px 4px;     /* slightly larger click target */
+  border-radius: 8px;
+  position: relative;
+}
+
+/* subtle underline “bar” on hover/focus */
+.site-nav a::after{
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 2px;
+  height: 2px;
+  background: rgba(11,74,162,0.22);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 140ms ease;
+  border-radius: 999px;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after{
+  transform: scaleX(1);
+}
+
+/* current page: stronger but still classy */
+.site-nav a[aria-current="page"]{
+  color: var(--text);
+  background: rgba(0,0,0,0.035);
+}
+
+.site-nav a[aria-current="page"]::after{
+  transform: scaleX(1);
+  background: rgba(11,74,162,0.35);
+}
+
+/* keep keyboard focus visible */
+.site-nav a:focus-visible{
+  outline: 2px solid rgba(11,74,162,0.35);
+  outline-offset: 2px;
+}
 
 .lightbox__close{
   position: absolute;
