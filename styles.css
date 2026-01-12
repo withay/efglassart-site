@@ -4,7 +4,11 @@
   --bg:#e6eaef;              /* pale slate grey */
   --text:#1b1b1b;
   --muted:#555;
-  --rule:#e7e2d6;
+
+  /* slightly cooler / tinted dividers */
+  --rule:#d7dbe2;
+  --rule-strong:#c7ced8;
+
   --link:#0b4aa2;
 
   --card:#ffffff;
@@ -16,10 +20,27 @@
 html,body{ margin:0; padding:0; }
 
 body{
-  background: var(--bg);
   color: var(--text);
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.55;
+
+  /* Background: faint tight weave (no stripes) */
+  background-color: var(--bg);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.018) 0px,
+      rgba(0,0,0,0.018) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.014) 0px,
+      rgba(0,0,0,0.014) 1px,
+      transparent 1px,
+      transparent 7px
+    );
 }
 
 /* Layout helpers used in your HTML */
@@ -46,7 +67,7 @@ body{
 
 /* Header + Nav */
 .site-header{
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-strong);
   padding: 18px 0 14px;
   margin-bottom: 18px;
 }
@@ -86,19 +107,38 @@ body{
   display: block;
 }
 
+/* Nav: larger + tighter spacing + pill hover */
 .site-nav{
   display:flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .site-nav a{
   text-decoration: none;
   color: var(--link);
-  padding: 4px 2px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: background-color 140ms ease, color 140ms ease;
 }
 
-.site-nav a:hover{ text-decoration: underline; }
+.site-nav a:hover,
+.site-nav a:focus-visible{
+  background: rgba(11,74,162,0.10);
+}
+
+.site-nav a[aria-current="page"]{
+  color: var(--text);
+  background: rgba(11,74,162,0.18);
+}
+
+.site-nav a:focus-visible{
+  outline: 2px solid rgba(11,74,162,0.35);
+  outline-offset: 2px;
+}
 
 /* Main area spacing */
 main.container{
@@ -109,7 +149,7 @@ main.container{
 /* Page header */
 .page-header{
   padding-bottom: 14px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-strong);
   margin-bottom: 18px;
 }
 
@@ -135,7 +175,7 @@ p{ margin: 10px 0; }
 .site-footer{
   margin-top: 26px;
   padding: 18px 0 26px;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-strong);
 }
 
 .site-footer .container{
@@ -158,7 +198,6 @@ p{ margin: 10px 0; }
   text-decoration: underline;
 }
 
-
 /* Card */
 .card{
   border: 1px solid var(--rule);
@@ -167,31 +206,19 @@ p{ margin: 10px 0; }
   padding: 16px;
   margin: 14px 0;
   box-shadow: var(--shadow);
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
 }
 
-/* Pills (Gallery filters) */
-.pill-row{
-  list-style:none;
-  padding:0;
-  margin: 0;
-  display:flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.card:hover{
+  transform: translateY(-2px);
+  border-color: var(--rule-strong);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.03),
+    0 10px 22px rgba(0,0,0,0.06);
 }
 
-.pill{
-  display:inline-block;
-  padding: 6px 10px;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: #fff;
-  text-decoration: none;
-  color: var(--link);
-  font-size: 14px;
-}
-
-.pill:hover{
-  text-decoration: underline;
+@media (hover: none){
+  .card:hover{ transform:none; box-shadow: var(--shadow); }
 }
 
 /* ===== “Gallery-like” framed image treatment (prevents tiny overflow/scrollbar look) ===== */
@@ -226,23 +253,11 @@ p{ margin: 10px 0; }
   display:block;
   width: 100%;
   height: auto;
-  max-height: 420px;          /* default */
-  object-fit: cover;          /* default */
+  max-height: 420px;
+  object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--rule);
   background:#fff;
-}
-
-.featured-img--cover{
-  object-fit: cover;
-}
-
-.featured-img--contain{
-  object-fit: contain;
-}
-
-.featured-img--tall{
-  max-height: 520px;
 }
 
 .featured-caption{
@@ -271,7 +286,7 @@ p{ margin: 10px 0; }
 .gallery-grid{
   display: grid;
   gap: 16px;
-  grid-template-columns: 1fr; /* mobile default */
+  grid-template-columns: 1fr;
 }
 
 @media (min-width: 700px){
@@ -292,6 +307,19 @@ p{ margin: 10px 0; }
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.piece-card:hover{
+  transform: translateY(-2px);
+  border-color: var(--rule-strong);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.03),
+    0 10px 22px rgba(0,0,0,0.06);
+}
+
+@media (hover: none){
+  .piece-card:hover{ transform:none; box-shadow: none; }
 }
 
 .piece-card a{
@@ -349,9 +377,7 @@ p{ margin: 10px 0; }
   margin: 10px 0 14px 0;
 }
 
-.gallery-mini figure{
-  margin: 0;
-}
+.gallery-mini figure{ margin: 0; }
 
 .gallery-mini img{
   width: 100%;
@@ -370,84 +396,39 @@ p{ margin: 10px 0; }
 }
 
 @media (max-width: 900px){
-  .gallery-mini{
-    grid-template-columns: 1fr;
-  }
-  .gallery-mini img{
-    height: 220px;
-  }
+  .gallery-mini{ grid-template-columns: 1fr; }
+  .gallery-mini img{ height: 220px; }
 }
 
-/* ===== Testimonials ===== */
-.testimonials-grid{
-  display: grid;
-  gap: 14px;
-  grid-template-columns: 1fr;
+/* ===== Collapsible gallery section (details/summary) ===== */
+.gallery-more summary{
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--link);
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
-@media (min-width: 760px){
-  .testimonials-grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
+.gallery-more summary::-webkit-details-marker{
+  display: none;
 }
 
-.testimonial{
-  position: relative;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 22px 16px 18px 38px;
-  line-height: 1.7;
+.gallery-more summary::before{
+  content: "▸";
+  font-size: 18px;
+  transition: transform 0.2s ease;
+  color: rgba(27,27,27,0.65);
 }
 
-.testimonial::before{
-  content: "“";
-  position: absolute;
-  top: 8px;
-  left: 12px;
-  font-size: 56px;
-  line-height: 1;
-  color: var(--rule);
-  font-family: Georgia, "Times New Roman", serif;
-  z-index: 0;
+.gallery-more[open] summary::before{
+  transform: rotate(90deg);
 }
 
-.testimonial p,
-.testimonial footer{
-  position: relative;
-  z-index: 1;
-}
-
-.testimonial p{
-  margin: 0 0 12px;
-  font-size: 16px;
-}
-
-.testimonial footer{
-  color: var(--muted);
-  font-size: 14px;
-  font-style: italic;
-}
-
-/* ===== About page artist layout ===== */
-.about-artist{
-  display: grid;
-  gap: 16px;
-}
-
-.about-photo{
-  width: 100%;
-  max-width: 260px;
-  border-radius: 12px;
-  border: 1px solid var(--rule);
-}
-
-@media (min-width: 700px){
-  .about-artist{
-    grid-template-columns: auto 1fr;
-    align-items: start;
-  }
+.gallery-more summary:hover{
+  text-decoration: underline;
 }
 
 /* ===== Lightbox (modal image viewer) ===== */
@@ -470,7 +451,7 @@ p{ margin: 10px 0; }
   max-width: min(1100px, 96vw);
   width: 100%;
   max-height: 90vh;
-  position: relative; /* needed for the close button */
+  position: relative;
 }
 
 .lightbox__img{
@@ -491,115 +472,6 @@ p{ margin: 10px 0; }
   line-height: 1.4;
   text-align: center;
 }
-/* =========================
-   EFGlassArt polish pass
-   Drop-in override (paste at END of styles.css)
-   ========================= */
-
-/* 1) Background: subtle texture + slightly richer divider color */
-:root{
-  /* Dividers slightly cooler/tinted */
-  --rule: #d7dbe2;           /* was #e7e2d6 */
-  --rule-strong: #c7ced8;    /* used for stronger separators */
-}
-
-/* subtle “paper” texture (very low contrast) */
-body{
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, rgba(0,0,0,0) 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0));
-  background-size: 26px 26px, 100% 240px;
-  background-attachment: fixed, scroll;
-}
-
-/* 2) Tinted / slightly stronger section dividers */
-.page-header{
-  border-bottom: 1px solid var(--rule-strong);
-}
-
-.site-header{
-  border-bottom: 1px solid var(--rule-strong);
-}
-
-.site-footer{
-  border-top: 1px solid var(--rule-strong);
-}
-
-/* 3) Subtle hover lift for “cards” and gallery tiles */
-.card,
-.piece-card{
-  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
-}
-
-.card:hover,
-.piece-card:hover{
-  transform: translateY(-2px);
-  border-color: var(--rule-strong);
-  box-shadow:
-    0 1px 0 rgba(0,0,0,0.03),
-    0 10px 22px rgba(0,0,0,0.06);
-}
-
-/* Don’t lift on touch devices where hover is weird */
-@media (hover: none){
-  .card:hover,
-  .piece-card:hover{
-    transform: none;
-    box-shadow: var(--shadow);
-  }
-}
-
-/* 4) Stronger nav links: bigger, bolder, clearer active state */
-.site-nav{
-  gap: 14px; /* a touch more breathing room */
-}
-
-.site-nav a{
-  font-size: 15px;      /* was default */
-  font-weight: 700;     /* stronger */
-  letter-spacing: 0.2px;
-  padding: 6px 4px;     /* slightly larger click target */
-  border-radius: 8px;
-  position: relative;
-}
-
-/* subtle underline “bar” on hover/focus */
-.site-nav a::after{
-  content: "";
-  position: absolute;
-  left: 6px;
-  right: 6px;
-  bottom: 2px;
-  height: 2px;
-  background: rgba(11,74,162,0.22);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 140ms ease;
-  border-radius: 999px;
-}
-
-.site-nav a:hover::after,
-.site-nav a:focus-visible::after{
-  transform: scaleX(1);
-}
-
-/* current page: stronger but still classy */
-.site-nav a[aria-current="page"]{
-  color: var(--text);
-  background: rgba(0,0,0,0.035);
-}
-
-.site-nav a[aria-current="page"]::after{
-  transform: scaleX(1);
-  background: rgba(11,74,162,0.35);
-}
-
-/* keep keyboard focus visible */
-.site-nav a:focus-visible{
-  outline: 2px solid rgba(11,74,162,0.35);
-  outline-offset: 2px;
-}
 
 .lightbox__close{
   position: absolute;
@@ -613,70 +485,6 @@ body{
   color: #fff;
   font-size: 22px;
   cursor: pointer;
-}
-
-/* =========================
-   Nav refinement: larger + tighter + pill hover
-   ========================= */
-
-/* Tighter spacing between links */
-.site-nav{
-  gap: 10px; /* was 14px */
-}
-
-/* Stronger nav links */
-.site-nav a{
-  font-size: 16px;          /* slightly larger */
-  font-weight: 700;
-  letter-spacing: 0.15px;
-  padding: 6px 10px;        /* tighter horizontally, still comfy */
-  border-radius: 999px;     /* pill shape */
-  transition:
-    background-color 140ms ease,
-    color 140ms ease;
-}
-
-/* Remove underline bar effect (pill replaces it) */
-.site-nav a::after{
-  display: none;
-}
-
-/* Hover / focus pill */
-.site-nav a:hover,
-.site-nav a:focus-visible{
-  background: rgba(11,74,162,0.10); /* subtle blue pill */
-}
-
-/* Current page: stronger pill */
-.site-nav a[aria-current="page"]{
-  color: var(--text);
-  background: rgba(11,74,162,0.18);
-}
-
-/* Keyboard focus still clear */
-.site-nav a:focus-visible{
-  outline: 2px solid rgba(11,74,162,0.35);
-  outline-offset: 2px;
-}
-
-/* ===== Background: faint tight weave (no stripes) ===== */
-body{
-  background-color: var(--bg) !important;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0.018) 0px,
-      rgba(0,0,0,0.018) 1px,
-      transparent 1px,
-      transparent 6px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(0,0,0,0.014) 0px,
-      rgba(0,0,0,0.014) 1px,
-      transparent 1px,
-      transparent 7px
-    ) !important;
 }
 
 .lightbox__close:hover{
